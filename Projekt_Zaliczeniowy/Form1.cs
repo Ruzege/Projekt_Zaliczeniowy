@@ -24,6 +24,7 @@ namespace Projekt_Zaliczeniowy
 
             dataGridViewKomputery.AllowDrop = true;
             dataGridViewKomputery.DataSource = db.Komputery.Local.ToBindingList();
+            dataGridViewProgramy.AutoGenerateColumns = true;
         }
 
         private void dataGridViewKomputery_SelectionChanged(object sender, EventArgs e)
@@ -34,6 +35,7 @@ namespace Projekt_Zaliczeniowy
             if (komputer != null)
             {
                 db.Entry(komputer).Collection(k => k.Programy).Load();
+                dataGridViewProgramy.DataSource = null;
                 dataGridViewProgramy.DataSource = komputer.Programy;
             }
         }
@@ -73,10 +75,53 @@ namespace Projekt_Zaliczeniowy
                 db.SaveChanges();
 
                 db.Entry(nowyKomputer).Collection(k => k.Programy).Load();
+                dataGridViewProgramy.DataSource = null;
                 dataGridViewProgramy.DataSource = nowyKomputer.Programy;
             }
 
             przeciaganyProgram = null;
+        }
+
+        private void buttonDodajProgram_Click(object sender, EventArgs e)
+        {
+            if (db == null || dataGridViewKomputery.CurrentRow == null) return;
+
+            var komputer = dataGridViewKomputery.CurrentRow.DataBoundItem as Komputer;
+            if (komputer == null) return;
+
+            var nowyProgram = new Oprogramowanie
+            {
+                Nazwa = "Nowy program",
+                Wersja = "1.0",
+                TypLicencji = "Trial",
+                DataInstalacji = DateTime.Now,
+                KomputerId = komputer.KomputerId
+            };
+
+            db.Programy.Add(nowyProgram);
+            db.SaveChanges();
+
+            db.Entry(komputer).Collection(k => k.Programy).Load();
+            dataGridViewProgramy.DataSource = null;
+            dataGridViewProgramy.DataSource = komputer.Programy;
+        }
+
+        private void buttonUsunProgram_Click(object sender, EventArgs e)
+        {
+            if (db == null || dataGridViewProgramy.CurrentRow == null) return;
+
+            var program = dataGridViewProgramy.CurrentRow.DataBoundItem as Oprogramowanie;
+            if (program == null) return;
+
+            db.Programy.Remove(program);
+            db.SaveChanges();
+
+            if (dataGridViewKomputery.CurrentRow?.DataBoundItem is Komputer komputer)
+            {
+                db.Entry(komputer).Collection(k => k.Programy).Load();
+                dataGridViewProgramy.DataSource = null;
+                dataGridViewProgramy.DataSource = komputer.Programy;
+            }
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
