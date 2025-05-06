@@ -17,108 +17,187 @@
 
         private void InitializeComponent()
         {
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.dataGridViewKomputery = new System.Windows.Forms.DataGridView();
-            this.dataGridViewProgramy = new System.Windows.Forms.DataGridView();
-            this.buttonZapisz = new System.Windows.Forms.Button();
-            this.buttonDodajProgram = new System.Windows.Forms.Button();
-            this.buttonUsunProgram = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKomputery)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProgramy)).BeginInit();
-            this.SuspendLayout();
+            splitContainer1 = new SplitContainer();
+            dataGridViewKomputery = new DataGridView();
+            dataGridViewProgramy = new DataGridView();
+            buttonZapisz = new Button();
+            buttonDodajProgram = new Button();
+            buttonUsunProgram = new Button();
+            btnImportCSV = new Button();
+            btnExportCSV = new Button();
+            cmbExportType = new ComboBox();
+            btnExportPDF = new Button();
+            lstLog = new ListBox();
+            btnExportLog = new Button();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewKomputery).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProgramy).BeginInit();
+            SuspendLayout();
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Size = new System.Drawing.Size(800, 400);
-            this.splitContainer1.SplitterDistance = 400;
-            this.splitContainer1.TabIndex = 0;
+            splitContainer1.Dock = DockStyle.Top;
+            splitContainer1.Location = new Point(0, 0);
+            splitContainer1.Margin = new Padding(3, 2, 3, 2);
+            splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.dataGridViewKomputery);
+            splitContainer1.Panel1.Controls.Add(dataGridViewKomputery);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.dataGridViewProgramy);
+            splitContainer1.Panel2.Controls.Add(dataGridViewProgramy);
+            splitContainer1.Size = new Size(822, 300);
+            splitContainer1.SplitterDistance = 411;
+            splitContainer1.TabIndex = 0;
             // 
             // dataGridViewKomputery
             // 
-            this.dataGridViewKomputery.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewKomputery.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewKomputery.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewKomputery.Name = "dataGridViewKomputery";
-            this.dataGridViewKomputery.Size = new System.Drawing.Size(400, 400);
-            this.dataGridViewKomputery.TabIndex = 0;
-            this.dataGridViewKomputery.SelectionChanged += new System.EventHandler(this.dataGridViewKomputery_SelectionChanged);
-            this.dataGridViewKomputery.DragOver += new System.Windows.Forms.DragEventHandler(this.dataGridViewKomputery_DragOver);
-            this.dataGridViewKomputery.DragDrop += new System.Windows.Forms.DragEventHandler(this.dataGridViewKomputery_DragDrop);
+            dataGridViewKomputery.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewKomputery.Dock = DockStyle.Fill;
+            dataGridViewKomputery.Location = new Point(0, 0);
+            dataGridViewKomputery.Margin = new Padding(3, 2, 3, 2);
+            dataGridViewKomputery.Name = "dataGridViewKomputery";
+            dataGridViewKomputery.Size = new Size(411, 300);
+            dataGridViewKomputery.TabIndex = 0;
+            dataGridViewKomputery.SelectionChanged += dataGridViewKomputery_SelectionChanged;
+            dataGridViewKomputery.DragDrop += dataGridViewKomputery_DragDrop;
+            dataGridViewKomputery.DragOver += dataGridViewKomputery_DragOver;
             // 
             // dataGridViewProgramy
             // 
-            this.dataGridViewProgramy.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewProgramy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewProgramy.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewProgramy.Name = "dataGridViewProgramy";
-            this.dataGridViewProgramy.Size = new System.Drawing.Size(396, 400);
-            this.dataGridViewProgramy.TabIndex = 0;
-            this.dataGridViewProgramy.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dataGridViewProgramy_MouseDown);
+            dataGridViewProgramy.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewProgramy.Dock = DockStyle.Fill;
+            dataGridViewProgramy.Location = new Point(0, 0);
+            dataGridViewProgramy.Margin = new Padding(3, 2, 3, 2);
+            dataGridViewProgramy.Name = "dataGridViewProgramy";
+            dataGridViewProgramy.Size = new Size(407, 300);
+            dataGridViewProgramy.TabIndex = 0;
+            dataGridViewProgramy.MouseDown += dataGridViewProgramy_MouseDown;
             // 
             // buttonZapisz
             // 
-            this.buttonZapisz.Location = new System.Drawing.Point(650, 410);
-            this.buttonZapisz.Name = "buttonZapisz";
-            this.buttonZapisz.Size = new System.Drawing.Size(130, 30);
-            this.buttonZapisz.TabIndex = 1;
-            this.buttonZapisz.Text = "Zapisz zmiany";
-            this.buttonZapisz.UseVisualStyleBackColor = true;
-            this.buttonZapisz.Click += new System.EventHandler(this.buttonZapisz_Click);
+            buttonZapisz.Location = new Point(696, 308);
+            buttonZapisz.Margin = new Padding(3, 2, 3, 2);
+            buttonZapisz.Name = "buttonZapisz";
+            buttonZapisz.Size = new Size(114, 22);
+            buttonZapisz.TabIndex = 1;
+            buttonZapisz.Text = "Zapisz zmiany";
+            buttonZapisz.UseVisualStyleBackColor = true;
+            buttonZapisz.Click += buttonZapisz_Click;
             // 
             // buttonDodajProgram
             // 
-            this.buttonDodajProgram.Location = new System.Drawing.Point(500, 410);
-            this.buttonDodajProgram.Name = "buttonDodajProgram";
-            this.buttonDodajProgram.Size = new System.Drawing.Size(130, 30);
-            this.buttonDodajProgram.TabIndex = 2;
-            this.buttonDodajProgram.Text = "Dodaj program";
-            this.buttonDodajProgram.UseVisualStyleBackColor = true;
-            this.buttonDodajProgram.Click += new System.EventHandler(this.buttonDodajProgram_Click);
+            buttonDodajProgram.Location = new Point(576, 308);
+            buttonDodajProgram.Margin = new Padding(3, 2, 3, 2);
+            buttonDodajProgram.Name = "buttonDodajProgram";
+            buttonDodajProgram.Size = new Size(114, 22);
+            buttonDodajProgram.TabIndex = 2;
+            buttonDodajProgram.Text = "Dodaj program";
+            buttonDodajProgram.UseVisualStyleBackColor = true;
+            buttonDodajProgram.Click += buttonDodajProgram_Click;
             // 
             // buttonUsunProgram
             // 
-            this.buttonUsunProgram.Location = new System.Drawing.Point(360, 410);
-            this.buttonUsunProgram.Name = "buttonUsunProgram";
-            this.buttonUsunProgram.Size = new System.Drawing.Size(130, 30);
-            this.buttonUsunProgram.TabIndex = 3;
-            this.buttonUsunProgram.Text = "Usuń program";
-            this.buttonUsunProgram.UseVisualStyleBackColor = true;
-            this.buttonUsunProgram.Click += new System.EventHandler(this.buttonUsunProgram_Click);
+            buttonUsunProgram.Location = new Point(456, 308);
+            buttonUsunProgram.Margin = new Padding(3, 2, 3, 2);
+            buttonUsunProgram.Name = "buttonUsunProgram";
+            buttonUsunProgram.Size = new Size(114, 22);
+            buttonUsunProgram.TabIndex = 3;
+            buttonUsunProgram.Text = "Usuń program";
+            buttonUsunProgram.UseVisualStyleBackColor = true;
+            buttonUsunProgram.Click += buttonUsunProgram_Click;
+            // 
+            // btnImportCSV
+            // 
+            btnImportCSV.Location = new Point(126, 307);
+            btnImportCSV.Name = "btnImportCSV";
+            btnImportCSV.Size = new Size(104, 23);
+            btnImportCSV.TabIndex = 5;
+            btnImportCSV.Text = "Importuj z CSV";
+            btnImportCSV.UseVisualStyleBackColor = true;
+            btnImportCSV.Click += btnImportCSV_Click;
+            // 
+            // btnExportCSV
+            // 
+            btnExportCSV.Location = new Point(12, 307);
+            btnExportCSV.Name = "btnExportCSV";
+            btnExportCSV.Size = new Size(108, 23);
+            btnExportCSV.TabIndex = 7;
+            btnExportCSV.Text = "Exportuj do CSV";
+            btnExportCSV.UseVisualStyleBackColor = true;
+            btnExportCSV.Click += btnExportCSV_Click;
+            // 
+            // cmbExportType
+            // 
+            cmbExportType.FormattingEnabled = true;
+            cmbExportType.Location = new Point(12, 345);
+            cmbExportType.Name = "cmbExportType";
+            cmbExportType.Size = new Size(108, 23);
+            cmbExportType.TabIndex = 8;
+            cmbExportType.Text = "Typ danych:";
+            cmbExportType.SelectedIndexChanged += cmbExportType_SelectedIndexChanged;
+            // 
+            // btnExportPDF
+            // 
+            btnExportPDF.Location = new Point(236, 307);
+            btnExportPDF.Name = "btnExportPDF";
+            btnExportPDF.Size = new Size(108, 23);
+            btnExportPDF.TabIndex = 9;
+            btnExportPDF.Text = "Exportuj do PDF";
+            btnExportPDF.UseVisualStyleBackColor = true;
+            btnExportPDF.Click += btnExportPDF_Click;
+            // 
+            // lstLog
+            // 
+            lstLog.FormattingEnabled = true;
+            lstLog.ItemHeight = 15;
+            lstLog.Location = new Point(12, 385);
+            lstLog.Name = "lstLog";
+            lstLog.Size = new Size(330, 94);
+            lstLog.TabIndex = 10;
+            // 
+            // btnExportLog
+            // 
+            btnExportLog.Location = new Point(126, 345);
+            btnExportLog.Name = "btnExportLog";
+            btnExportLog.Size = new Size(104, 23);
+            btnExportLog.TabIndex = 11;
+            btnExportLog.Text = "Exportuj logi";
+            btnExportLog.UseVisualStyleBackColor = true;
+            btnExportLog.Click += btnExportLog_Click;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.buttonUsunProgram);
-            this.Controls.Add(this.buttonDodajProgram);
-            this.Controls.Add(this.buttonZapisz);
-            this.Controls.Add(this.splitContainer1);
-            this.Name = "Form1";
-            this.Text = "Zarządzanie oprogramowaniem w firmie";
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKomputery)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProgramy)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(822, 488);
+            Controls.Add(btnExportLog);
+            Controls.Add(lstLog);
+            Controls.Add(btnExportPDF);
+            Controls.Add(cmbExportType);
+            Controls.Add(btnExportCSV);
+            Controls.Add(btnImportCSV);
+            Controls.Add(buttonUsunProgram);
+            Controls.Add(buttonDodajProgram);
+            Controls.Add(buttonZapisz);
+            Controls.Add(splitContainer1);
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "Form1";
+            Text = "Zarządzanie oprogramowaniem w firmie";
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewKomputery).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProgramy).EndInit();
+            ResumeLayout(false);
         }
+
 
         #endregion
 
@@ -128,5 +207,12 @@
         private System.Windows.Forms.Button buttonZapisz;
         private System.Windows.Forms.Button buttonDodajProgram;
         private System.Windows.Forms.Button buttonUsunProgram;
+        private Button button1;
+        private Button btnImportCSV;
+        private Button btnExportCSV;
+        private ComboBox cmbExportType;
+        private Button btnExportPDF;
+        private ListBox lstLog;
+        private Button btnExportLog;
     }
 }
